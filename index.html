@@ -1,0 +1,310 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>TDD in testing Web apps</title>
+
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/theme/beige.css">
+
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="lib/css/zenburn.css">
+	<link rel="stylesheet" href="css/custom.css">
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+	<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/zenburn.min.css">
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/highlight.min.js"></script>
+	<!--<script>hljs.initHighlightingOnLoad();</script>-->
+</head>
+
+<body>
+	<img class="logo" src="/img/KMDlogo.svg">
+	<div class="reveal">
+		<div class="slides">
+			<section>
+				<h2>TDD in testing Web apps</h2>
+				<!--<h4>... and testing basics</h4>-->
+			</section>
+			<section>
+				<section id="fragments">
+					<h2>Agenda</h2>
+					<ol class="agenda">
+						<li><a href="/#/2">What is software testing?</a></li>
+						<li><a href="/#/4">Who does software testing?</a></li>
+						<li><a href="/#/6">Types of software testing.</a></li>
+						<li><a href="/#/7">Levels of software testing.</a></li>
+						<li><a href="/#/10">TDD in software testing.</a></li>
+						<li><a href="/#/13">Demo</a></li>
+						<li><a href="/#/14">Summary</a></li>
+						<li><a href="/#/15">Resources</a></li>
+					</ol>
+				</section>
+			</section>
+
+			<section>
+				<h2>What is software testing? <small>1/2</small></h2>
+				<p>Software testing is a broad term but in general is a process to validate that a software program, application or product:</p>
+				<ul>
+					<li class="fragment">Meets the business and technical requirements that guided it’s design and development</li>
+					<li class="fragment">Has no bugs/defects/errors</li>
+					<li class="fragment">Works as expected</li>
+				</ul>
+			</section>
+
+			<section>
+				<h2>What is software testing? <small>2/2</small></h2>
+				<p>From technical point of view software testing evaluate a software item (i.e. class, class method or function) to detect
+					differences between given input and expected output.</p>
+				<p class="fragment">Furthermore testing assess the quality of the product.</p>
+				<p class="fragment">Testing should be done during the software development process.</p>
+			</section>
+
+			<section>
+				<h2>Who does software testing?&nbsp;<small>1/2</small></h2>
+				<p>In the IT industry, large companies have a team with responsibilities to evaluate the developed software in context of
+					the given requirements. In most cases, the following professionals are involved in testing a system within their respective
+					capacities:
+				</p>
+				<ul>
+					<li class="fragment">Software Tester</li>
+					<li class="fragment">Software Developer</li>
+					<li class="fragment">Project Lead/Manager</li>
+					<li class="fragment">End User</li>
+				</ul>
+			</section>
+
+			<section>
+				<h2>Who does software testing?&nbsp;<small>2/2</small></h2>
+				<p>In the incremental software development model (for instance in Scrum), testing is performed at the end of every sprint/iteration
+					and the whole application is tested at the end.</p>
+			</section>
+
+			<section>
+				<h2>Types of software testing.</h2>
+				<ul>
+					<li>
+						Manual testing
+						<small class="fragment">In nutshell manual testing means testing without any automated tools or any scripts. 
+							Tester/developer takes over the role of an end-user and tests the software to identify any unexpected behaviour or bug.</small>
+					</li>
+					<li>
+						Automate testing
+						<small class="fragment">
+							This is a process when a user write scripts or use test framework / library to test the product. 
+							This is just an automation of manual testing. 
+							This kind of testing is used to re-run the test scenarios/ test suits for example whenever user saves his code or push commits to the repository.
+						</small>
+					</li>
+				</ul>
+			</section>
+
+			<section>
+				<h2>Levels of software testing.</h2>
+				<ul>
+					<li>
+						Functional testing
+						<small>
+							This is a black-box testing which based on the specifications of the software that is to be tested. <br>
+						</small>
+					</li>
+					<li>
+						Non-functional testing
+						<small>
+							This kind of testing involves testing a software from the requirements which are nonfunctional in nature, 
+							but important such as performance (load testing and stress testing), security or user interface.
+						</small>
+					</li>
+				</ul>
+			</section>
+
+			<section>
+				<h2>Functional testing <small>1/2</small></h2>
+				<p>We can distinguish several types of functional tests:</p>
+				<ul>
+					<li>
+						Unit testing
+						<small class="fragment">
+							The goal of unit testing is to isolate each part of the program and show that individual 
+							parts are correct in terms of requirements and functionality.
+						</small>
+					</li>
+					<li>
+						Integration testing / E2E
+						<small class="fragment">
+							Integration testing is defined as the testing of combined parts of an application to determine if they function correctly. 
+							There are two approaches: <br> 
+							<ul>
+								<li>Bottom-up integration – unit tests are followed by higher level tests</li>
+								<li>Top-down integration – works other way around</li>
+							</ul>
+							In this group we can also distinguish End-to-end testing which  ensure that software works as expected from user’s perpective.
+						</small>
+					</li>
+				</ul>
+			</section>
+
+			<section>
+				<h2>Functional testing <small>2/2</small></h2>
+				<ul>
+					<li>
+						System testing
+						<small class="fragment">
+							Once all the components are integrated, the application as a whole is tested rigorously
+							to see that it meets the specified Quality Standards.
+						</small>
+					</li>
+					<li>
+						Regression testing
+						<small class="fragment">
+							The intent of regression testing is to ensure that a change, such as a bug fix 
+							should not result in another fault being uncovered in the application.
+						</small>
+					</li>
+					<li>
+						Acceptance testing
+						<small class="fragment">
+							This is arguably the most important type of testing, as it is conducted by the Quality Assurance Team 
+							who will assess whether the application meets the intended specifications and satisfies the client’s requirements.
+						</small>
+					</li>
+				</ul>
+			</section>
+
+			<section>
+				<h2>TDD in software testing <small>1/3</small></h2>
+				<p>Test-driven development is a programming methodology that complement test-first approach of Extreme Programming in which
+					developers write tests before implementing a feature or a unit.
+				</p>
+			</section>
+
+			<section class="tdd">
+				<h2>TDD in software testing <small>2/3</small></h2>
+				<p>TDD is a process that consists of three phases:</p>
+				<img src="/img/tdd.png" alt="tdd life cycle" class="fragment">
+			</section>
+
+			<section>
+				<h2>TDD in software testing <small>3/3</small></h2>
+				<ul>
+					<li>
+						Write a failing test
+						<small class="fragment">
+							Write a test that invokes your logic and assert that the correct behaviour is produced.
+							<ul>
+								<li>In a unit test, this would be asserting the return value of a function or verifying 
+									that a mocked dependency was called as expected</li>
+								<li>In a functional test, this would be ensuring that a UI or an API behaves predictably across a number of actions</li>
+							</ul>
+						</small>
+					</li>
+					<li>
+						Make the test pass
+						<small class="fragment">
+							Implement the minimum amount of code that results in the test passing, and ensure that all other tests continue to pass
+						</small>
+					</li>
+					<li>
+						Refactor the implementation
+						<small class="fragment">
+							Update or rewrite the implementation, without breaking any public contracts, to improve 
+							its quality without breaking the new and existing tests
+						</small>
+					</li>
+				</ul>
+			</section>
+
+			<section>
+				<h2>Demo</h2>
+				<pre>
+					<code class="html" data-trim contenteditable>
+						<form class="test-form">
+							<fieldset>
+								<legend>Simple form</legend>
+								<label>
+									First name
+									<input name="first-name" type="text" data-validation="alphabetical" data-pattern="^[a-z]+$"/>                
+								</label>
+								<label>
+									Age
+									<input name="age" type="text" data-validation="numeric" data-pattern="^[0-9]+$"/>    
+								</label>
+								<button>Send</button>
+							</fieldset>
+						</form>
+					</code>
+				</pre>
+			</section>
+			<section>
+				<h2>Summary</h2>
+				<section>
+					<ul>
+						<li>An early start to testing reduces the cost and time to rework and produce error-free software that is delivered to
+							the client.</li>
+					</ul>
+				</section>
+				<section>
+					<ul>
+						<li>Diagnosing and fixing errors identified during proper testing should not be interpreted as a time-consuming process
+							but productive activity.</li>
+					</ul>
+				</section>
+				<section>
+					<ul>
+						<li>No one can claim that even well tested software is 100% bug-free.</li>
+					</ul>
+				</section>
+				<section>
+					<ul>
+						<li>Testing software provides a natural way to document our software.</li>
+					</ul>
+				</section>
+				<section>
+					<ul>
+						<li>TDD is time-saving technique and contribute to the quality of a software.</li>
+					</ul>
+				</section>
+			</section>
+			<section>
+				<h2>Resources:</h2>
+				<ul>
+					<li><a href="https://www.tutorialspoint.com/software_testing/software_testing_quick_guide.htm" target="_blank">Software Testing - Overview</a></li>
+					<li><a href="https://www.codeproject.com/Tips/351122/What-is-software-testing-What-are-the-different-ty" target="_blank">What is software testing? What are the different types of testing?</a></li>
+					<li><a href="https://www.sitepoint.com/learning-javascript-test-driven-development-by-example/" target="_blank">Learning JavaScript Test-Driven Development by Examples</a></li>
+					<li><a href="https://mochajs.org/" target="_blank">Mocha - the fun, simple, flexible JavaScript test framework</a></li>
+				</ul>
+			</section>
+		</div>
+	</div>
+
+	<script src="lib/js/head.min.js"></script>
+	<script src="js/reveal.js"></script>
+
+	<script>
+		// More info https://github.com/hakimel/reveal.js#configuration
+		Reveal.initialize({
+			history: true,
+			transition: 'concave',
+			// width: '1200',
+
+			// More info https://github.com/hakimel/reveal.js#dependencies
+			dependencies: [
+				{ src: 'plugin/markdown/marked.js' },
+				{ src: 'plugin/markdown/markdown.js' },
+				{ src: 'plugin/notes/notes.js', async: true },
+				{ src: 'plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } }
+			]
+		});
+	</script>
+</body>
+
+</html>
